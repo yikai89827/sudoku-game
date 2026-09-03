@@ -1,0 +1,103 @@
+<!-- pages/result/result.wxml -->
+<view class="container theme-{{theme}}">
+  <view class="bg-decoration">
+    <view class="bg-circle bg-circle-1"></view>
+    <view class="bg-circle bg-circle-2"></view>
+    <view class="bg-circle bg-circle-3"></view>
+  </view>
+
+  <view class="result-card pop-in" wx:if="{{win}}">
+    <view class="result-header">
+      <text class="result-title">恭喜通关!</text>
+      <text class="result-subtitle">{{modeLabel}} · {{difficultyName}}<text wx:if="{{mode === 'classic' || mode === 'mission'}}"> · 第{{level}}关</text></text>
+    </view>
+
+    <view class="stars-area" wx:if="{{showStars}}">
+      <view class="star {{stars >= 1 ? 'star-active' : 'star-inactive'}}">
+        <text>⭐</text>
+      </view>
+      <view class="star {{stars >= 2 ? 'star-active' : 'star-inactive'}}">
+        <text>⭐</text>
+      </view>
+      <view class="star {{stars >= 3 ? 'star-active' : 'star-inactive'}}">
+        <text>⭐</text>
+      </view>
+    </view>
+
+    <view class="stats-area">
+      <view class="stat-row" wx:if="{{mode !== 'blitz'}}">
+        <text class="stat-label">用时</text>
+        <text class="stat-val">{{timeDisplay}}</text>
+      </view>
+      <view class="stat-row" wx:if="{{mode === 'blitz'}}">
+        <text class="stat-label">剩余时间</text>
+        <text class="stat-val">{{remain}}秒</text>
+      </view>
+      <view class="stat-row">
+        <text class="stat-label">错误</text>
+        <text class="stat-val">{{mistakes}}次</text>
+      </view>
+      <view class="stat-row">
+        <text class="stat-label">提示</text>
+        <text class="stat-val">{{hintsUsed}}次</text>
+      </view>
+      <view class="stat-row">
+        <text class="stat-label">连锁得分</text>
+        <text class="stat-val">{{chainScore}}</text>
+      </view>
+      <view class="stat-row">
+        <text class="stat-label">连锁次数</text>
+        <text class="stat-val">{{chainCount}}次</text>
+      </view>
+      <view class="stat-row" wx:if="{{bestCombo > 0}}">
+        <text class="stat-label">最高连击</text>
+        <text class="stat-val">x{{bestCombo >= 3 ? 2 : (bestCombo >= 2 ? 1.5 : 1)}}</text>
+      </view>
+      <view class="stat-row" wx:if="{{mode === 'daily'}}">
+        <text class="stat-label">每日综合分</text>
+        <text class="stat-val">{{dailyScore}}</text>
+      </view>
+      <view class="stat-row" wx:if="{{mode === 'blitz'}}">
+        <text class="stat-label">闪电得分</text>
+        <text class="stat-val">{{blitzScore}}</text>
+      </view>
+    </view>
+
+    <view class="action-area">
+      <view class="btn-next" bindtap="onPrimary">
+        <text>{{primaryText}}</text>
+      </view>
+      <view class="btn-secondary">
+        <view class="btn-half" bindtap="onChangeDifficulty" wx:if="{{mode !== 'daily'}}">
+          <text>{{mode === 'blitz' ? '换时长' : '换难度'}}</text>
+        </view>
+        <view class="btn-half" bindtap="onHome">
+          <text>回首页</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="result-card pop-in" wx:if="{{!win}}">
+    <view class="result-header">
+      <text class="result-title fail">挑战失败</text>
+      <text class="result-subtitle">{{modeLabel}} · {{difficultyName}}</text>
+    </view>
+    <view class="action-area">
+      <view class="btn-next" bindtap="onPrimary">
+        <text>再试一次</text>
+      </view>
+      <view class="btn-secondary">
+        <view class="btn-half" bindtap="onHome">
+          <text>回首页</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="fireworks" wx:if="{{win && stars >= 2}}">
+    <view class="firework fw1"></view>
+    <view class="firework fw2"></view>
+    <view class="firework fw3"></view>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/difficulty/difficulty",
+    "pages/blitz/blitz",
+    "pages/game/game",
+    "pages/result/result",
+    "pages/achievements/achievements",
+    "pages/rank/rank",
+    "pages/rules/rules"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "navigationBarTitleText": "一起快乐玩数独呀",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#1a1a2e"
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

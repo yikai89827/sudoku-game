@@ -1,0 +1,35 @@
+<!-- pages/rank/rank.wxml -->
+<view class="container theme-{{theme}}">
+  <view class="bg-decoration">
+    <view class="bg-circle bg-circle-1"></view>
+    <view class="bg-circle bg-circle-2"></view>
+  </view>
+
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navHeight}}px;">
+    <view class="nav-left" style="width: {{menuWidth}}px;">
+      <view class="nav-back" bindtap="onBack">
+        <text class="nav-back-icon">‹</text>
+        <text class="nav-back-text">返回</text>
+      </view>
+    </view>
+    <text class="nav-title">好友排行</text>
+    <view class="nav-right" style="width: {{menuWidth}}px;"></view>
+  </view>
+
+  <view class="rank-tip fade-in">
+    <text class="tip-text">与微信好友一起玩，通关数自动同步到云端排行</text>
+  </view>
+
+  <view class="rank-canvas-wrap fade-in">
+    <canvas
+      type="2d"
+      id="rankCanvas"
+      class="rank-canvas"
+      style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"
+    ></canvas>
+  </view>
+
+  <view class="rank-footer fade-in">
+    <text class="footer-note">仅展示已玩过本小程序的微信好友</text>
+  </view>
+</view>

@@ -1,0 +1,309 @@
+/* app.wxss - 全局样式 + 主题变量 */
+
+/* ========== 黑夜主题（默认） ========== */
+.theme-night {
+  --page-bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.35);
+  --text-faint: rgba(255, 255, 255, 0.3);
+  --title-gradient: linear-gradient(135deg, #fff, #a8a8ff);
+  --title-shadow: rgba(168, 168, 255, 0.3);
+  --subtitle-color: rgba(255, 255, 255, 0.4);
+
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-bg-soft: rgba(255, 255, 255, 0.06);
+  --card-bg-faint: rgba(255, 255, 255, 0.04);
+  --card-bg-active: rgba(255, 255, 255, 0.12);
+  --card-bg-press: rgba(255, 255, 255, 0.15);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-border-soft: rgba(255, 255, 255, 0.1);
+  --card-border-faint: rgba(255, 255, 255, 0.08);
+  --card-shadow: rgba(0, 0, 0, 0.3);
+
+  --accent: #667eea;
+  --accent-2: #764ba2;
+  --accent-3: #f093fb;
+  --accent-soft: #a8a8ff;
+  --accent-gradient: linear-gradient(135deg, #667eea, #764ba2);
+  --accent-shadow: rgba(118, 75, 162, 0.4);
+  --accent-shadow-strong: rgba(118, 75, 162, 0.5);
+  --accent-glow: rgba(102, 126, 234, 0.65);
+  --accent-line: rgba(102, 126, 234, 0.35);
+  --accent-line-soft: rgba(102, 126, 234, 0.2);
+  --accent-fill: rgba(102, 126, 234, 0.35);
+  --accent-fill-soft: rgba(102, 126, 234, 0.1);
+  --accent-fill-mid: rgba(102, 126, 234, 0.2);
+  --accent-fill-strong: rgba(102, 126, 234, 0.3);
+  --accent-border: rgba(102, 126, 234, 0.5);
+  --accent-border-strong: rgba(102, 126, 234, 0.7);
+  --accent-border-active: rgba(102, 126, 234, 0.6);
+  --accent-tip-bg: rgba(102, 126, 234, 0.15);
+  --accent-tip-border: rgba(102, 126, 234, 0.25);
+
+  --circle-1: #667eea;
+  --circle-2: #764ba2;
+  --circle-3: #f093fb;
+  --circle-opacity: 0.15;
+
+  --board-bg: rgba(255, 255, 255, 0.04);
+  --board-border: rgba(255, 255, 255, 0.1);
+  --cell-bg: rgba(255, 255, 255, 0.03);
+  --cell-initial-bg: rgba(255, 255, 255, 0.06);
+  --cell-value: #4a90d9;
+  --cell-initial: #ffffff;
+  --note-color: rgba(255, 255, 255, 0.35);
+  --num-text: #ffffff;
+
+  --overlay-bg: rgba(0, 0, 0, 0.85);
+  --overlay-bg-soft: rgba(0, 0, 0, 0.7);
+  --pause-icon: rgba(255, 255, 255, 0.6);
+
+  --danger: #ff5252;
+  --gold: #ffd700;
+  --gold-soft: rgba(255, 215, 0, 0.15);
+  --gold-border: rgba(255, 215, 0, 0.35);
+  --gold-fill: rgba(255, 215, 0, 0.08);
+  --success: #43e97b;
+  --success-fill: rgba(67, 233, 123, 0.15);
+  --shine: rgba(255, 255, 255, 0.2);
+
+  --rank-canvas-bg: #1a1a2e;
+  --btn-text: #ffffff;
+}
+
+/* ========== 白天主题 ========== */
+.theme-day {
+  --page-bg: linear-gradient(135deg, #e8f0fe, #f5f7fb, #d6e4f5);
+  --text-primary: #1a1a2e;
+  --text-secondary: rgba(26, 26, 46, 0.58);
+  --text-muted: rgba(26, 26, 46, 0.4);
+  --text-faint: rgba(26, 26, 46, 0.32);
+  --title-gradient: linear-gradient(135deg, #302b63, #5b6fe8);
+  --title-shadow: rgba(91, 111, 232, 0.25);
+  --subtitle-color: rgba(26, 26, 46, 0.4);
+
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-bg-soft: rgba(255, 255, 255, 0.7);
+  --card-bg-faint: rgba(255, 255, 255, 0.55);
+  --card-bg-active: rgba(255, 255, 255, 0.92);
+  --card-bg-press: rgba(232, 240, 254, 0.95);
+  --card-border: rgba(91, 111, 232, 0.18);
+  --card-border-soft: rgba(91, 111, 232, 0.14);
+  --card-border-faint: rgba(91, 111, 232, 0.1);
+  --card-shadow: rgba(91, 111, 232, 0.12);
+
+  --accent: #5b6fe8;
+  --accent-2: #7c6cf0;
+  --accent-3: #a78bfa;
+  --accent-soft: #6b7ff0;
+  --accent-gradient: linear-gradient(135deg, #5b6fe8, #7c6cf0);
+  --accent-shadow: rgba(91, 111, 232, 0.35);
+  --accent-shadow-strong: rgba(91, 111, 232, 0.4);
+  --accent-glow: rgba(91, 111, 232, 0.55);
+  --accent-line: rgba(91, 111, 232, 0.45);
+  --accent-line-soft: rgba(91, 111, 232, 0.25);
+  --accent-fill: rgba(91, 111, 232, 0.28);
+  --accent-fill-soft: rgba(91, 111, 232, 0.1);
+  --accent-fill-mid: rgba(91, 111, 232, 0.16);
+  --accent-fill-strong: rgba(91, 111, 232, 0.22);
+  --accent-border: rgba(91, 111, 232, 0.45);
+  --accent-border-strong: rgba(91, 111, 232, 0.65);
+  --accent-border-active: rgba(91, 111, 232, 0.55);
+  --accent-tip-bg: rgba(91, 111, 232, 0.12);
+  --accent-tip-border: rgba(91, 111, 232, 0.28);
+
+  --circle-1: #5b6fe8;
+  --circle-2: #7c6cf0;
+  --circle-3: #93c5fd;
+  --circle-opacity: 0.18;
+
+  --board-bg: rgba(255, 255, 255, 0.85);
+  --board-border: rgba(91, 111, 232, 0.2);
+  --cell-bg: rgba(232, 240, 254, 0.55);
+  --cell-initial-bg: rgba(91, 111, 232, 0.1);
+  --cell-value: #3d5ec9;
+  --cell-initial: #1a1a2e;
+  --note-color: rgba(26, 26, 46, 0.4);
+  --num-text: #1a1a2e;
+
+  --overlay-bg: rgba(232, 240, 254, 0.92);
+  --overlay-bg-soft: rgba(245, 247, 251, 0.88);
+  --pause-icon: rgba(26, 26, 46, 0.5);
+
+  --danger: #e53935;
+  --gold: #e6a700;
+  --gold-soft: rgba(230, 167, 0, 0.12);
+  --gold-border: rgba(230, 167, 0, 0.4);
+  --gold-fill: rgba(230, 167, 0, 0.1);
+  --success: #2e9e6a;
+  --success-fill: rgba(46, 158, 106, 0.12);
+  --shine: rgba(255, 255, 255, 0.45);
+
+  --rank-canvas-bg: #f4f7fc;
+  --btn-text: #ffffff;
+}
+
+/* ========== 护眼主题 ========== */
+.theme-eyecare {
+  --page-bg: linear-gradient(135deg, #d8e8cc, #e4efd8, #c8dbb8);
+  --text-primary: #2d3a28;
+  --text-secondary: rgba(45, 58, 40, 0.6);
+  --text-muted: rgba(45, 58, 40, 0.42);
+  --text-faint: rgba(45, 58, 40, 0.32);
+  --title-gradient: linear-gradient(135deg, #3d5a34, #5a7d4e);
+  --title-shadow: rgba(90, 125, 78, 0.28);
+  --subtitle-color: rgba(45, 58, 40, 0.42);
+
+  --card-bg: rgba(244, 248, 236, 0.75);
+  --card-bg-soft: rgba(244, 248, 236, 0.65);
+  --card-bg-faint: rgba(244, 248, 236, 0.5);
+  --card-bg-active: rgba(244, 248, 236, 0.9);
+  --card-bg-press: rgba(228, 239, 216, 0.95);
+  --card-border: rgba(90, 125, 78, 0.22);
+  --card-border-soft: rgba(90, 125, 78, 0.16);
+  --card-border-faint: rgba(90, 125, 78, 0.12);
+  --card-shadow: rgba(61, 90, 52, 0.12);
+
+  --accent: #5a7d4e;
+  --accent-2: #6b8f5e;
+  --accent-3: #a3b98a;
+  --accent-soft: #7a9e6a;
+  --accent-gradient: linear-gradient(135deg, #6b8f5e, #5a7d4e);
+  --accent-shadow: rgba(90, 125, 78, 0.35);
+  --accent-shadow-strong: rgba(90, 125, 78, 0.4);
+  --accent-glow: rgba(90, 125, 78, 0.5);
+  --accent-line: rgba(90, 125, 78, 0.4);
+  --accent-line-soft: rgba(90, 125, 78, 0.22);
+  --accent-fill: rgba(90, 125, 78, 0.28);
+  --accent-fill-soft: rgba(90, 125, 78, 0.1);
+  --accent-fill-mid: rgba(90, 125, 78, 0.16);
+  --accent-fill-strong: rgba(90, 125, 78, 0.22);
+  --accent-border: rgba(90, 125, 78, 0.45);
+  --accent-border-strong: rgba(90, 125, 78, 0.65);
+  --accent-border-active: rgba(90, 125, 78, 0.55);
+  --accent-tip-bg: rgba(90, 125, 78, 0.12);
+  --accent-tip-border: rgba(90, 125, 78, 0.28);
+
+  --circle-1: #6b8f5e;
+  --circle-2: #a3b98a;
+  --circle-3: #c5d9a8;
+  --circle-opacity: 0.22;
+
+  --board-bg: rgba(244, 248, 236, 0.8);
+  --board-border: rgba(90, 125, 78, 0.22);
+  --cell-bg: rgba(216, 232, 204, 0.55);
+  --cell-initial-bg: rgba(90, 125, 78, 0.12);
+  --cell-value: #4a6b40;
+  --cell-initial: #2d3a28;
+  --note-color: rgba(45, 58, 40, 0.4);
+  --num-text: #2d3a28;
+
+  --overlay-bg: rgba(216, 232, 204, 0.94);
+  --overlay-bg-soft: rgba(228, 239, 216, 0.9);
+  --pause-icon: rgba(45, 58, 40, 0.5);
+
+  --danger: #c45c4a;
+  --gold: #b8860b;
+  --gold-soft: rgba(184, 134, 11, 0.14);
+  --gold-border: rgba(184, 134, 11, 0.4);
+  --gold-fill: rgba(184, 134, 11, 0.1);
+  --success: #4a8f5c;
+  --success-fill: rgba(74, 143, 92, 0.15);
+  --shine: rgba(255, 255, 255, 0.35);
+
+  --rank-canvas-bg: #e4efd8;
+  --btn-text: #ffffff;
+}
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: transparent;
+  color: #fff;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 页面根容器统一铺满主题背景 */
+.theme-night,
+.theme-day,
+.theme-eyecare {
+  background: var(--page-bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 通用卡片样式 */
+.card {
+  background: var(--card-bg, rgba(255, 255, 255, 0.08));
+  border-radius: 20rpx;
+  padding: 30rpx;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.12));
+  box-shadow: 0 8rpx 32rpx var(--card-shadow, rgba(0, 0, 0, 0.3));
+}
+
+/* 通用按钮 */
+.btn-primary {
+  background: var(--accent-gradient, linear-gradient(135deg, #667eea, #764ba2));
+  color: var(--btn-text, #fff);
+  border: none;
+  border-radius: 50rpx;
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx var(--accent-shadow, rgba(118, 75, 162, 0.4));
+  transition: all 0.3s ease;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 16rpx var(--accent-shadow, rgba(118, 75, 162, 0.3));
+}
+
+/* 页面淡入动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* 弹出动画 */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pop-in {
+  animation: popIn 0.4s ease-out;
+}
+
+/* 闪烁动画 */
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}

@@ -1,0 +1,172 @@
+<!-- pages/game/game.wxml -->
+<view class="game-container theme-{{theme}}">
+  <!-- 顶部导航 -->
+  <view class="game-nav" style="padding-top: {{statusBarHeight+25}}px; height: {{navHeight}}px;">
+    <view class="nav-back" bindtap="onExit">
+      <text class="nav-icon">‹</text>
+    </view>
+    <view class="nav-center">
+      <text class="nav-diff">{{modeTitle || difficultyName}}</text>
+      <text class="nav-level" wx:if="{{mode === 'classic' || mode === 'mission'}}">{{difficultyName}} · 第{{level}}关</text>
+      <text class="nav-level" wx:elif="{{mode === 'daily'}}">{{difficultyName}} · {{dailyDateKey}}</text>
+      <text class="nav-level" wx:elif="{{mode === 'blitz'}}">{{difficultyName}} · 闪电</text>
+    </view>
+    <view class="nav-pause" bindtap="onTogglePause">
+      <text class="nav-icon">{{paused ? '▶' : '⏸'}}</text>
+    </view>
+  </view>
+
+  <!-- 状态栏 -->
+  <view class="status-bar">
+    <view class="status-item">
+      <text class="status-icon">⏱</text>
+      <text class="status-value {{mode === 'blitz' && remainSeconds <= 30 ? 'danger' : ''}}">{{timerDisplay}}</text>
+    </view>
+    <view class="status-item">
+      <text class="status-icon">✗</text>
+      <text class="status-value {{mistakes >= maxMistakes ? 'danger' : ''}}">{{mistakes}}/{{maxMistakes}}</text>
+    </view>
+    <view class="status-item">
+      <text class="status-icon">📺</text>
+      <text class="status-value">{{hintsUsed}}</text>
+    </view>
+    <view class="status-item">
+      <text class="status-icon">✨</text>
+      <text class="status-value">{{chainScore}}</text>
+    </view>
+  </view>
+
+  <!-- 任务进度 -->
+  <view class="mission-bar" wx:if="{{mode === 'mission' && missionGoals}}">
+    <view class="mission-item {{missionProgress.chain >= missionGoals.chain ? 'done' : ''}}">
+      <text class="mission-text">连锁 {{missionProgress.chain}}/{{missionGoals.chain}}</text>
+    </view>
+    <view class="mission-item {{missionProgress.burst >= missionGoals.burst ? 'done' : ''}}" wx:if="{{missionGoals.burst > 0}}">
+      <text class="mission-text">爆发 {{missionProgress.burst}}/{{missionGoals.burst}}</text>
+    </view>
+    <view class="mission-item {{missionProgress.combo >= missionGoals.combo ? 'done' : ''}}" wx:if="{{missionGoals.combo > 0}}">
+      <text class="mission-text">连击 {{missionProgress.combo}}/{{missionGoals.combo}}</text>
+    </view>
+  </view>
+
+  <!-- 闪电延时按钮 -->
+  <view class="blitz-actions" wx:if="{{mode === 'blitz' && !completed}}">
+    <view class="blitz-btn {{blitzExtendUsed || blitzAdLoading ? 'disabled' : ''}}" bindtap="onBlitzExtend">
+      <text>{{blitzAdLoading ? '加载中...' : (blitzExtendUsed ? '延时已用' : '看视频 +60秒')}}</text>
+    </view>
+  </view>
+
+  <!-- 时间飘字 -->
+  <view class="time-float" wx:if="{{timeFloat}}">
+    <text>{{timeFloat}}</text>
+  </view>
+
+  <!-- 暂停遮罩 -->
+  <view class="pause-overlay" wx:if="{{paused}}" bindtap="onTogglePause">
+    <view class="pause-content" catchtap="onTogglePause">
+      <text class="pause-icon">⏸</text>
+      <text class="pause-text">游戏暂停</text>
+      <view class="resume-btn">
+        <text>继续游戏</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 连锁消除特效 -->
+  <view class="chain-effect-overlay" wx:if="{{chainEffect}}">
+    <view class="chain-bonus-display {{chainEffect.continuous ? 'continuous' : ''}}">
+      <text class="chain-bonus-text">{{chainEffect.continuous ? 'COMBO!' : '连锁消除!'}}</text>
+      <text class="chain-bonus-value">+{{chainEffect.bonus}}</text>
+      <text class="chain-bonus-mult">{{chainEffect.multiplier}}</text>
+      <text class="chain-bonus-extra" wx:if="{{chainEffect.burstBonus > 0}}">爆发 +{{chainEffect.burstBonus}}</text>
+      <text class="chain-bonus-extra" wx:elif="{{chainEffect.continuous}}">连续 +10</text>
+    </view>
+  </view>
+
+  <!-- 数独棋盘 -->
+  <view class="sudoku-board" wx:if="{{!loading}}">
+    <view 
+      wx:for="{{board}}" 
+      wx:for-item="row" 
+      wx:for-index="rowIndex"
+      wx:key="rowIndex"
+      class="board-row {{rowIndex % 3 === 2 && rowIndex !== 8 ? 'row-border' : ''}}"
+    >
+      <view 
+        wx:for="{{row}}"
+        wx:for-item="cell"
+        wx:for-index="colIndex"
+        wx:key="colIndex"
+        class="cell {{colIndex % 3 === 2 && colIndex !== 8 ? 'col-border' : ''}} 
+          {{selectedRow === rowIndex && selectedCol === colIndex ? 'cell-selected' : ''}}
+          {{selectedRow === rowIndex && selectedCol !== colIndex ? 'cell-highlight-row' : ''}}
+          {{selectedCol === colIndex && selectedRow !== rowIndex ? 'cell-highlight-col' : ''}}
+          {{initialCells[rowIndex][colIndex] ? 'cell-initial' : ''}}
+          {{errorCells[rowIndex + '-' + colIndex] ? 'cell-error' : ''}}
+          {{selectedNumber !== 0 && cell === selectedNumber ? 'cell-same-number' : ''}}
+          {{chainEffect && chainEffect.cells[rowIndex + '-' + colIndex] ? 'cell-chain' : ''}}"
+        data-row="{{rowIndex}}"
+        data-col="{{colIndex}}"
+        bindtap="onCellTap"
+      >
+        <text 
+          wx:if="{{cell !== 0}}"
+          class="cell-value {{initialCells[rowIndex][colIndex] ? 'initial-value' : ''}}
+            {{errorCells[rowIndex + '-' + colIndex] ? 'error-value' : ''}}
+            {{chainEffect && chainEffect.cells[rowIndex + '-' + colIndex] ? 'chain-value' : ''}}"
+        >{{cell}}</text>
+        
+        <view class="notes-grid" wx:if="{{cell === 0}}">
+          <view class="note-cell" wx:for="{{notes[rowIndex][colIndex]}}" wx:for-item="hasNote" wx:for-index="noteIdx" wx:key="noteIdx">
+            <text class="note-text" wx:if="{{hasNote}}">{{noteIdx + 1}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text class="loading-text">生成关卡中...</text>
+  </view>
+
+  <view class="action-bar" wx:if="{{!loading}}">
+    <view class="action-btn {{noteMode ? 'active' : ''}}" bindtap="onToggleNote">
+      <text class="action-icon">✏</text>
+      <text class="action-label">笔记</text>
+    </view>
+    <view class="action-btn {{undoStack.length === 0 ? 'disabled' : ''}}" bindtap="onUndo">
+      <text class="action-icon">↶</text>
+      <text class="action-label">撤销</text>
+    </view>
+    <view class="action-btn" bindtap="onErase">
+      <text class="action-icon">⌫</text>
+      <text class="action-label">清除</text>
+    </view>
+    <view class="action-btn {{hintLoading ? 'disabled' : ''}}" bindtap="onUseHint">
+      <text class="action-icon">📺</text>
+      <text class="action-label">{{hintLoading ? '加载中' : '看视频提示'}}</text>
+    </view>
+  </view>
+
+  <view class="number-panel" wx:if="{{!loading && !paused && !completed}}">
+    <view 
+      wx:for="{{[1,2,3,4,5,6,7,8,9]}}"
+      wx:for-item="num"
+      wx:key="*this"
+      class="num-btn {{selectedNumber === num ? 'num-active' : ''}} {{noteMode ? 'num-note-mode' : ''}}"
+      data-num="{{num}}"
+      catchtap="onNumberInput"
+    >
+      <text class="num-text">{{num}}</text>
+    </view>
+  </view>
+
+  <view class="win-overlay" wx:if="{{completed}}">
+    <view class="win-content">
+      <text class="win-text">恭喜通关!</text>
+      <view class="win-stars">
+        <text class="star">⭐</text>
+      </view>
+    </view>
+  </view>
+</view>

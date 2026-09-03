@@ -1,0 +1,67 @@
+<!-- pages/difficulty/difficulty.wxml -->
+<view class="container theme-{{theme}}">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="bg-circle bg-circle-1"></view>
+    <view class="bg-circle bg-circle-2"></view>
+  </view>
+
+  <!-- 顶部导航 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight+20}}px; height: {{navHeight}}px;">
+    <view class="nav-left" style="width: {{menuWidth}}px;">
+      <view class="nav-back" bindtap="onBack">
+        <text class="nav-back-icon">‹</text>
+        <text class="nav-back-text">返回</text>
+      </view>
+    </view>
+    <text class="nav-title">{{pageTitle}}</text>
+    <view class="nav-right" style="width: {{menuWidth}}px;"></view>
+  </view>
+
+  <!-- 难度卡片列表 -->
+  <view class="diff-list">
+    <view 
+      wx:for="{{difficulties}}" 
+      wx:key="key"
+      class="diff-card fade-in"
+      style="animation-delay: {{index * 0.08}}s; border-color: {{item.color}}33;"
+      data-difficulty="{{item.key}}"
+      bindtap="onSelectDifficulty"
+    >
+      <!-- 图标区 -->
+      <view class="diff-icon-area" style="background: {{item.gradient}};">
+        <text class="diff-icon">{{item.icon}}</text>
+      </view>
+
+      <!-- 信息区 -->
+      <view class="diff-info">
+        <view class="diff-header">
+          <text class="diff-name" style="color: {{item.color}};">{{item.name}}</text>
+          <text class="diff-name-en">{{item.nameEn}}</text>
+        </view>
+        <text class="diff-desc">{{item.desc}}</text>
+        <view class="diff-stats">
+          <view class="diff-stat">
+            <text class="stat-key">第{{item.currentLevel}}关</text>
+          </view>
+          <view class="diff-stat">
+            <text class="stat-key">空白{{item.removeCount}}格</text>
+          </view>
+          <view class="diff-stat">
+            <text class="stat-key">视频提示</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 箭头 -->
+      <view class="diff-arrow" style="color: {{item.color}};">
+        <text>›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部说明 -->
+  <view class="bottom-note fade-in" style="animation-delay: 0.4s">
+    <text class="note-text">同一难度下，关卡越高空白格越多，挑战递增</text>
+  </view>
+</view>

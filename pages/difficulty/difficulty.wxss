@@ -1,0 +1,211 @@
+/* pages/difficulty/difficulty.wxss */
+.container {
+  min-height: 100vh;
+  padding: 0 30rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80rpx);
+  opacity: var(--circle-opacity, 0.12);
+}
+
+.bg-circle-1 {
+  width: 500rpx;
+  height: 500rpx;
+  background: var(--circle-1, #667eea);
+  top: -150rpx;
+  left: -100rpx;
+}
+
+.bg-circle-2 {
+  width: 400rpx;
+  height: 400rpx;
+  background: var(--circle-3, #f093fb);
+  bottom: -100rpx;
+  right: -100rpx;
+}
+
+.nav-bar {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 0;
+  margin-bottom: 40rpx;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16rpx;
+  flex-shrink: 0;
+}
+
+.nav-back {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 16rpx 8rpx 0;
+  z-index: 10;
+}
+
+.nav-back-icon {
+  font-size: 48rpx;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+  font-weight: 300;
+  height: 80rpx;
+}
+
+.nav-back-text {
+  font-size: 28rpx;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+  margin-left: 4rpx;
+  line-height: 1;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--text-primary, #fff);
+  letter-spacing: 4rpx;
+  text-align: center;
+  flex: 1;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.diff-list {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  padding: 20rpx 0;
+}
+
+.diff-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: var(--card-bg-soft, rgba(255, 255, 255, 0.06));
+  border-radius: 24rpx;
+  border: 2px solid var(--card-border-soft, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.diff-card:active {
+  transform: scale(0.98);
+  background: var(--card-bg-active, rgba(255, 255, 255, 0.12));
+}
+
+.diff-icon-area {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4rpx 16rpx var(--card-shadow, rgba(0, 0, 0, 0.2));
+}
+
+.diff-icon {
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #fff;
+}
+
+.diff-info {
+  flex: 1;
+  margin-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.diff-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+}
+
+.diff-name {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.diff-name-en {
+  font-size: 22rpx;
+  color: var(--text-faint, rgba(255, 255, 255, 0.3));
+  letter-spacing: 2rpx;
+}
+
+.diff-desc {
+  font-size: 24rpx;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+  margin-top: 8rpx;
+}
+
+.diff-stats {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.diff-stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg, rgba(255, 255, 255, 0.08));
+  border-radius: 12rpx;
+  padding: 0 16rpx;
+  height: 44rpx;
+  box-sizing: border-box;
+}
+
+.stat-key {
+  font-size: 22rpx;
+  line-height: 1;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+}
+
+.diff-arrow {
+  font-size: 56rpx;
+  font-weight: 300;
+  margin-left: 16rpx;
+}
+
+.bottom-note {
+  z-index: 1;
+  text-align: center;
+  padding: 40rpx 0 60rpx;
+}
+
+.note-text {
+  font-size: 24rpx;
+  color: var(--text-faint, rgba(255, 255, 255, 0.3));
+}

@@ -1,0 +1,143 @@
+/* pages/blitz/blitz.wxss */
+.container {
+  min-height: 100vh;
+  padding: 0 30rpx 60rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-decoration {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60rpx);
+  opacity: var(--circle-opacity, 0.15);
+}
+
+.bg-circle-1 {
+  width: 400rpx;
+  height: 400rpx;
+  background: var(--gold, #ffd700);
+  top: -80rpx;
+  right: -80rpx;
+}
+
+.bg-circle-2 {
+  width: 300rpx;
+  height: 300rpx;
+  background: var(--circle-1, #667eea);
+  bottom: 120rpx;
+  left: -60rpx;
+}
+
+.nav-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: content-box;
+}
+
+.nav-left,
+.nav-right {
+  flex-shrink: 0;
+}
+
+.nav-back {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 16rpx 8rpx 0;
+}
+
+.nav-back-icon {
+  font-size: 48rpx;
+  color: var(--text-primary, #fff);
+  line-height: 1;
+  margin-right: 4rpx;
+}
+
+.nav-back-text {
+  font-size: 28rpx;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+  letter-spacing: 2rpx;
+}
+
+.tip {
+  position: relative;
+  z-index: 1;
+  margin: 24rpx 0 32rpx;
+  padding: 24rpx;
+  background: var(--gold-soft, rgba(255, 215, 0, 0.1));
+  border-radius: 16rpx;
+  border: 1px solid var(--gold-border, rgba(255, 215, 0, 0.25));
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  line-height: 1.6;
+}
+
+.option-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  padding: 32rpx 28rpx;
+  background: var(--card-bg-soft, rgba(255, 255, 255, 0.06));
+  border-radius: 24rpx;
+  border: 1px solid var(--card-border-soft, rgba(255, 255, 255, 0.1));
+}
+
+.option-card:active {
+  transform: scale(0.98);
+  background: var(--card-bg-active, rgba(255, 255, 255, 0.12));
+}
+
+.option-icon {
+  font-size: 44rpx;
+  margin-right: 24rpx;
+}
+
+.option-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.option-label {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+}
+
+.option-desc {
+  font-size: 24rpx;
+  color: var(--text-muted, rgba(255, 255, 255, 0.45));
+  margin-top: 6rpx;
+}
+
+.option-arrow {
+  font-size: 48rpx;
+  color: var(--gold, #ffd700);
+  opacity: 0.85;
+  font-weight: 300;
+}

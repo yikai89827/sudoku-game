@@ -1,0 +1,17 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.log
+
+# Dependencies / build
+node_modules/
+miniprogram_npm/
+.cache/
+
+# Local WeChat tooling (optional private overrides)
+# Keep project.private.config.json if you want local lib version synced;
+# uncomment next line to ignore it:
+# project.private.config.json

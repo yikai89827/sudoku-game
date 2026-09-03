@@ -1,0 +1,131 @@
+<!-- pages/rules/rules.wxml -->
+<view class="container theme-{{theme}}">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="bg-circle bg-circle-1"></view>
+    <view class="bg-circle bg-circle-2"></view>
+  </view>
+
+  <!-- 导航栏 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navHeight}}px;">
+    <view class="nav-left" style="width: {{menuWidth}}px;">
+      <view class="nav-back" bindtap="onBack">
+        <text class="nav-back-icon">‹</text>
+        <text class="nav-back-text">返回</text>
+      </view>
+    </view>
+    <text class="nav-title">玩法说明</text>
+    <view class="nav-right" style="width: {{menuWidth}}px;"></view>
+  </view>
+
+  <!-- 规则内容 -->
+  <view class="rules-content">
+    <!-- 基础规则 -->
+    <view class="rule-section fade-in">
+      <view class="rule-header">
+        <text class="rule-icon">📐</text>
+        <text class="rule-title">基础规则</text>
+      </view>
+      <text class="rule-text">9×9棋盘，每行、每列、每个3×3宫内填入1-9且不重复。点击空格，选择下方数字填入。初始数字不可修改。</text>
+    </view>
+
+    <!-- 连锁消除 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.1s">
+      <view class="rule-header">
+        <text class="rule-icon">✨</text>
+        <text class="rule-title">连锁消除</text>
+      </view>
+      <text class="rule-text">填入正确数字后，若某行/列/宫恰好完成（此前恰好缺你填的这格），触发连锁消除特效并获得分数。每完成一个区域，按该区域剩余空格数×10分计算。10秒内连续触发额外+10分。</text>
+    </view>
+
+    <!-- 笔记模式 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.2s">
+      <view class="rule-header">
+        <text class="rule-icon">✏</text>
+        <text class="rule-title">笔记模式</text>
+      </view>
+      <text class="rule-text">点击"笔记"按钮进入笔记模式，可在空格中标记候选数字（1-9），以3×3小字排列。再次点击同一数字可取消标记。笔记模式下不会覆盖已填入的数字。</text>
+    </view>
+
+    <!-- 视频提示 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.3s">
+      <view class="rule-header">
+        <text class="rule-icon">📺</text>
+        <text class="rule-title">视频提示</text>
+      </view>
+      <text class="rule-text">点击「看视频提示」后需完整观看激励视频，视频结束后自动填入一个错误格子或空格的正确答案。使用提示会影响星级评定。</text>
+    </view>
+
+    <!-- 主题切换 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.31s">
+      <view class="rule-header">
+        <text class="rule-icon">🎨</text>
+        <text class="rule-title">主题切换</text>
+      </view>
+      <text class="rule-text">首页可一键切换黑夜、白天、护眼主题，背景、文字与特效会同步适配。黑夜主题默认可用；白天与护眼主题需完整观看视频后永久解锁。</text>
+    </view>
+
+    <!-- 连锁连击 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.32s">
+      <view class="rule-header">
+        <text class="rule-icon">🔥</text>
+        <text class="rule-title">连锁连击</text>
+      </view>
+      <text class="rule-text">10秒内连续触发连锁可进入连击：第2次×1.5，第3次起×2，并额外+10。同一次填数完成多个区域（行/列/宫）可获爆发奖励：每多一个区域+20分。</text>
+    </view>
+
+    <!-- 连锁任务 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.34s">
+      <view class="rule-header">
+        <text class="rule-icon">🎯</text>
+        <text class="rule-title">连锁任务</text>
+      </view>
+      <text class="rule-text">独立关卡线。每关需达成连锁次数、爆发、连击等目标后才能通关。进度与经典闯关互不影响。</text>
+    </view>
+
+    <!-- 每日一题 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.36s">
+      <view class="rule-header">
+        <text class="rule-icon">📅</text>
+        <text class="rule-title">每日一题</text>
+      </view>
+      <text class="rule-text">每天一局，难度按日期随机。可重复挑战，保留当日最佳综合分（连锁分 + 用时奖励 - 错误/提示惩罚）。</text>
+    </view>
+
+    <!-- 闪电挑战 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.38s">
+      <view class="rule-header">
+        <text class="rule-icon">⚡</text>
+        <text class="rule-title">闪电挑战</text>
+      </view>
+      <text class="rule-text">可选 1/2/3/5 分钟倒计时。填对+2秒，连锁+5秒，连击再+3秒，填错-5秒。每局可看视频延时一次（+60秒），时间耗尽可看视频复活一次。</text>
+    </view>
+
+    <!-- 好友排行 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.4s">
+      <view class="rule-header">
+        <text class="rule-icon">🏆</text>
+        <text class="rule-title">好友排行</text>
+      </view>
+      <text class="rule-text">通关后成绩自动上传云端，可在首页「好友榜」查看微信好友的累计通关排名。仅展示已玩过本小程序的好友数据。</text>
+    </view>
+
+    <!-- 星级评分 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.4s">
+      <view class="rule-header">
+        <text class="rule-icon">⭐</text>
+        <text class="rule-title">星级评分</text>
+      </view>
+      <text class="rule-text">根据完成时间、错误次数和提示使用次数综合评定1-3星。三星要求：无错误、不使用提示、在限定时间内完成。</text>
+    </view>
+
+    <!-- 难度递增 -->
+    <view class="rule-section fade-in" style="animation-delay: 0.5s">
+      <view class="rule-header">
+        <text class="rule-icon">📈</text>
+        <text class="rule-title">难度递增</text>
+      </view>
+      <text class="rule-text">同一难度下，每关都会比前一关增加更多空白格，挑战逐步升级。简单难度每5关增加2格，其他难度每5关增加1-2格。</text>
+    </view>
+  </view>
+</view>

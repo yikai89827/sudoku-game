@@ -1,0 +1,100 @@
+<!-- pages/index/index.wxml -->
+<view class="container theme-{{theme}}">
+  <view class="bg-decoration">
+    <view class="circle circle-1"></view>
+    <view class="circle circle-2"></view>
+    <view class="circle circle-3"></view>
+  </view>
+
+  <view class="header fade-in">
+    <image class="brand-logo" src="/images/logo.png" mode="aspectFit"></image>
+    <view class="title-wrapper">
+      <text class="title">一起快乐玩数独呀</text>
+      <text class="subtitle">快乐填格 · 一起开玩</text>
+    </view>
+    <view class="title-line-wrap">
+      <view class="title-line-base"></view>
+      <view class="title-line-glow"></view>
+    </view>
+  </view>
+
+  <view class="theme-switcher fade-in" style="animation-delay: 0.05s">
+    <view
+      wx:for="{{themeList}}"
+      wx:key="id"
+      class="theme-chip {{item.active ? 'active' : ''}}"
+      bindtap="onSelectTheme"
+      data-id="{{item.id}}"
+    >
+      <view class="theme-preview theme-preview-{{item.id}}"></view>
+      <text class="theme-name">{{item.name}}</text>
+      <text class="theme-lock" wx:if="{{!item.unlocked}}">🎬</text>
+      <text class="theme-unlock-hint" wx:if="{{!item.unlocked}}">看视频解锁</text>
+    </view>
+  </view>
+
+  <view class="stats-grid fade-in" style="animation-delay: 0.1s">
+    <view class="stat-card">
+      <text class="stat-icon">🎯</text>
+      <text class="stat-value">{{totalWins}}</text>
+      <text class="stat-label">通关</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-icon">✨</text>
+      <text class="stat-value">{{chainCount}}</text>
+      <text class="stat-label">连锁</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-icon">🔥</text>
+      <text class="stat-value">{{winStreak}}</text>
+      <text class="stat-label">连胜</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-icon">🏅</text>
+      <text class="stat-value">{{achievementsCount}}</text>
+      <text class="stat-label">成就</text>
+    </view>
+  </view>
+
+  <view class="main-action fade-in" style="animation-delay: 0.2s">
+    <view class="start-btn" bindtap="onStart">
+      <text class="start-text">经典闯关</text>
+      <text class="start-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="mode-actions fade-in" style="animation-delay: 0.25s">
+    <view class="mode-btn" bindtap="onMission">
+      <text class="mode-icon">🎯</text>
+      <text class="mode-text">连锁任务</text>
+    </view>
+    <view class="mode-btn {{dailyDone ? '' : 'mode-hot'}}" bindtap="onDaily">
+      <text class="mode-icon">📅</text>
+      <text class="mode-text">每日一题</text>
+      <view class="mode-dot" wx:if="{{!dailyDone}}"></view>
+    </view>
+    <view class="mode-btn" bindtap="onBlitz">
+      <text class="mode-icon">⚡</text>
+      <text class="mode-text">闪电挑战</text>
+    </view>
+  </view>
+
+  <view class="secondary-actions fade-in" style="animation-delay: 0.3s">
+    <view class="sec-btn" bindtap="onRank">
+      <text class="sec-icon">🏆</text>
+      <text class="sec-text">好友榜</text>
+    </view>
+    <view class="sec-btn" bindtap="onAchievements">
+      <text class="sec-icon">🎖</text>
+      <text class="sec-text">成就</text>
+    </view>
+    <view class="sec-btn" bindtap="onRules">
+      <text class="sec-icon">📖</text>
+      <text class="sec-text">规则</text>
+    </view>
+  </view>
+
+  <view class="footer fade-in" style="animation-delay: 0.4s">
+    <text class="footer-text">连锁连击 · 每日挑战 · 闪电限时</text>
+  </view>
+</view>
